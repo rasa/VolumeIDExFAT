@@ -25,9 +25,9 @@ jobs:
       with:
         vs-version: '[17.6,)'
 
-    - name: Build Debug x64
-      working-directory: ${{env.GITHUB_WORKSPACE}}
-      run: msbuild /m /p:Configuration=Debug /p:Platform=x64 ${{env.SOLUTION_FILE_PATH}}
+    # - name: Build Debug x64
+    #  working-directory: ${{env.GITHUB_WORKSPACE}}
+    #  run: msbuild /m /p:Configuration=Debug /p:Platform=x64 ${{env.SOLUTION_FILE_PATH}}
 
     - name: Build Release x64
       working-directory: ${{env.GITHUB_WORKSPACE}}
@@ -36,7 +36,7 @@ jobs:
     - name: Create Archive
       uses: thedoctor0/zip-release@0.7.6
       with:
-        command: "mkdir -p zip; cp -fpv x64/Debyg/VolumeIDExFAT.exe x64/Release/VolumeIDExFAT.exe LICENSE.txt README.md zip"
+        command: "mkdir -p zip; cp -fpv x64/Release/VolumeIDExFAT.exe LICENSE.txt README.md zip"
         directory: zip
         filename: VolumeIDExFAT.zip
         type: zip
