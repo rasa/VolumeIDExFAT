@@ -32,3 +32,17 @@ jobs:
     - name: Build Release x64
       working-directory: ${{env.GITHUB_WORKSPACE}}
       run: msbuild /m /p:Configuration=Release /p:Platform=x64 ${{env.SOLUTION_FILE_PATH}}
+
+    - name: Create Archive
+      uses: thedoctor0/zip-release@0.7.6
+      with:
+        command: "mkdir -p zip; cp -fpv x64/Debyg/VolumeIDExFAT.exe x64/Release/VolumeIDExFAT.exe LICENSE.txt README.md zip"
+        directory: zip
+        filename: VolumeIDExFAT.zip
+        type: zip
+
+    - name: Upload VolumeIDExFAT.zip
+      uses: actions/upload-artifact@v4
+      with:
+        name: VolumeIDExFAT.zip
+        path: zip/VolumeIDExFAT.zip
