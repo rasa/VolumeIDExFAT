@@ -2,11 +2,12 @@
 
 name: Release On Tag Push
 
-on:
+on:  # yamllint disable-line rule:truthy
   push:
     # Sequence of patterns matched against refs/tags
     tags:
     - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
 
 env:
   SOLUTION_FILE_PATH: . # Path to the solution file relative to the root of the project
@@ -17,10 +18,10 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Add MSBuild to PATH
-        uses: microsoft/setup-msbuild@v1.3.1
+        uses: microsoft/setup-msbuild@v2
         with:
           vs-prerelease: true # possibly unneeded, depends on the software installed on the runner
           vs-version: '[17.6,)' # must support C++23 named modules
