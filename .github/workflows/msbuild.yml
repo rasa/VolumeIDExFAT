@@ -31,7 +31,7 @@ jobs:
 
     - name: Build Release x64
       working-directory: ${{env.GITHUB_WORKSPACE}}
-      run: msbuild /m /p:Configuration=Release /p:Platform=x64 ${{env.SOLUTION_FILE_PATH}}
+      run: msbuild /m /p:Configuration=Release /p:Platform=x64 /p:_CRT_SECURE_NO_WARNINGS=1 ${{env.SOLUTION_FILE_PATH}}
 
     - name: Create Archive
       uses: thedoctor0/zip-release@0.7.6
