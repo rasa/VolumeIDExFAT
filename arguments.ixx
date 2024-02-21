@@ -3,6 +3,8 @@
 //
 // Please refer to LICENSE.txt for details about distribution and modification
 
+#define _CRT_SECURE_NO_WARNINGS
+
 export module arguments;
 
 import std;
