@@ -92,7 +92,7 @@ export void ParseArguments(const vector<string>& args, Arguments& arguments) {
     }
 
     if (!arguments.isLicenseAccepted) {
-        if std::getenv("I_accept_license") {
+        if (std::getenv("I_accept_license")) {
             arguments.isLicenseAccepted = true;
         }
     }
