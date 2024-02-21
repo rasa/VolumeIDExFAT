@@ -90,8 +90,15 @@ export void ParseArguments(const vector<string>& args, Arguments& arguments) {
             }
         }
     }
+
     if (!arguments.isLicenseAccepted) {
-        throw ProgramArgumentsError("Required argument missing: license agreement statement (\"-i_accept_license\" argument)."s);
+        if std::getenv("I_accept_license") {
+            arguments.isLicenseAccepted = true;
+        }
+    }
+
+    if (!arguments.isLicenseAccepted) {
+        throw ProgramArgumentsError("Required envvar or argument missing: license agreement statement (\"-i_accept_license\" argument)."s);
     }
     if (!hasDriveString) {
         throw ProgramArgumentsError("Required argument missing: drive."s);
