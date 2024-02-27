@@ -3,7 +3,7 @@
 //
 // Please refer to LICENSE.txt for details about distribution and modification
 
-#define _CRT_SECURE_NO_WARNINGS
+// #define _CRT_SECURE_NO_WARNINGS
 
 export module arguments;
 
@@ -94,7 +94,7 @@ export void ParseArguments(const vector<string>& args, Arguments& arguments) {
     }
 
     if (!arguments.isLicenseAccepted) {
-        if (std::getenv("I_accept_license") != NULL) {
+        if (std::getenv("I_accept_license")) {
             arguments.isLicenseAccepted = true;
         }
     }
